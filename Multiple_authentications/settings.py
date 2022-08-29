@@ -35,7 +35,7 @@ SECRET_KEY = 'ts*2txuxc0-44ob*)q=htfk$)0=&12tct%8s8ivdxzamjm7lb8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','multipleauthentications.herokuapp.com']
 
 
 # Application definition
