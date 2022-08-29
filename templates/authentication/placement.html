@@ -1,0 +1,222 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        form {border: 3px solid #f1f1f1;}
+
+        input[type=text], input[type=password], input[type=date], input[type=parpose] ,select[type=text],input[type=file],input[type=number]{
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+
+        button {
+          background-color: #04AA6D;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+
+        button:hover {
+          opacity: 0.8;
+        }
+
+        .cancelbtn {
+          width: auto;
+          padding: 10px 18px;
+          background-color: #f44336;
+        }
+
+        .imgcontainer {
+          text-align: center;
+          margin: 24px 0 12px 0;
+        }
+
+        img.avatar {
+          width: 40%;
+          border-radius: 50%;
+        }
+
+        .container {
+          padding: 16px;
+          width: 40%;
+          margin-left: 30%;
+        }
+
+        span.psw {
+          float: right;
+          padding-top: 16px;
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 700px) {
+        span.psw {
+           display: block;
+           float: none;
+        }
+        .cancelbtn {
+           width: 100%;
+        }
+        .container {
+          padding: 16px;
+          width: 90%;
+          margin-left: 0%;
+        }
+        
+       
+      }
+      a{
+          text-decoration: none;
+          color: #f1f1f1;
+        }
+        </style>
+<script>
+  function validateForm() {
+  let x = document.forms["myForm"]["sno"].value;
+  let b = document.forms["myForm"]["name"].value;
+  let y = document.forms["myForm"]["pno"].value;
+  let e = document.forms["myForm"]["dep"].value;
+  let a = document.forms["myForm"]["regno"].value;
+  let i = document.forms["myForm"]["compdet"].value;
+  let h = document.forms["myForm"]["fullad"].value;  
+  let f = document.forms["myForm"]["datee"].value;
+  
+  let j = document.forms["myForm"]["fil"].value;
+  let k = document.forms["myForm"]["Upload_Photo_file"].value;
+  let l = document.forms["myForm"]["Attendance"].value;
+ 
+       
+
+
+  if (x == "") {
+    alert("Serial Number must be filled out");
+    return false;
+  }
+  if (b == "") {
+    alert("Student Name must be filled out");
+    return false;
+  }
+  if (y == "") {
+    alert("Phone Number must be filled out");
+    return false;
+  }
+  if (e == "") {
+    alert("Department must be filled out");
+    return false;
+  }
+
+  if (a == "") {
+    alert("Register Number must be filled out");
+    return false;
+  }
+  if (i == "") {
+    alert("Company Details must be filled out");
+    return false;
+  }
+ 
+  if (h == "") {
+    alert("Full Address must be filled out");
+    return false;
+  }
+  if (f == "") {
+    alert(" Date must be filled out");
+    return false;
+  }
+  if (j == "") {
+    alert("Certificate must be filled out");
+    return false;
+  }
+  if (k == "") {
+    alert("ppt Report must be filled out");
+    return false;
+  }
+  if (l == "") {
+    alert("document Shorts must be filled out");
+    return false;
+  }
+
+
+}
+</script>
+</head>
+<body>
+    <form  method="POST" name="myForm"  class="post-form" onsubmit="return validateForm()" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="imgcontainer">
+            <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+          </div>
+
+  <div class="container">
+    <button type="button" name="home"><a href="/slog/">Home </a></button>
+    <br>
+    <br>
+    <hr>
+    <br>
+            
+   
+    <label for="parpose">Serial Number: <span style="color: red; font-size: 25px;">*</span> </label>
+    <input type="number" name="sno" id="sno">
+           
+         
+    <label for="persontwo">Student Name:<span style="color: red; font-size: 25px;">*</span></label><br>
+    <input type="text" id="name" name="name" value=""><br>
+
+    <label for="Title">Phone Number:<span style="color: red; font-size: 25px;">*</span></label><br>
+    <input type="number" id="pno" name="pno" value=""><br>
+
+    <label for="FacultyName">Department:<span style="color: red; font-size: 25px;">*</span></label>
+    <select type="text" id="dep" name="dep">
+        <option value="M.Sc">msc</option>
+        <option value="M.Sc">msc</option>
+        <option value="M.Sc">msc</option>
+        
+    </select>
+    <label for="personone">Register Number:<span style="color: red; font-size: 25px;">*</span></label><br>
+    <input type="number" id="regno" name="regno" value=""><br>
+
+      
+
+
+      <label for="persontree">Company Details:</label><br>
+      <input type="text" id="compdet" name="compdet" value=""><br>
+
+      <label for="Place ">Full Address :<span style="color: red; font-size: 25px;">*</span></label><br>
+      <input type="text" id="fullad" name="fullad" value=""><br>
+
+      <label for="Datee ">Date :<span style="color: red; font-size: 25px;">*</span></label><br>
+      <input type="date" id="datee" name="datee"><br><br>
+
+
+        <label for="nops ">Certificate :<span style="color: red; font-size: 25px;">*</span></label><br>    
+        <input type="file" name="fil"multiple  id="fil">
+        <label for="nops "> PPT :<span style="color: red; font-size: 25px;">*</span></label><br>
+        <input type="file" name="Upload_Photo_file"multiple  id="Upload_Photo_file">
+        <label for="nops ">Document :<span style="color: red; font-size: 25px;"">*</span></label><br>
+        <input type="file" name="Attendance"multiple  id="Attendance">
+        
+       
+        <button type="submit" value="Submit">submit</button>
+        <button type="button" name="home"><a href="/slog/">Home </a></button>
+
+  </div>
+</form>
+</body>
+</html>

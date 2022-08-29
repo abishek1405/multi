@@ -1,0 +1,210 @@
+{% if user.is_lecturer %} 
+{% load static %}
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <title>Document</title>
+  <style>
+    body{
+
+      background-color: #d3c996;
+        height: 500px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position:relative;
+        color: rgb(11, 11, 11);
+    }
+    h1{
+       text-align: center;
+      }
+    .kik{
+          border: dotted rgb(52, 21, 154) 5px;
+          width: 2012px;
+          padding: 20px;
+          background-color: rgb(198, 190, 225);
+          margin: 10px;
+        }
+    table{
+      width: 100%;
+      background-color: rgb(253, 253, 253);
+      color: rgb(0, 0, 0);
+
+    }
+    #bt{
+      padding: 5px;
+      border: none;
+      margin-left: 200px;
+    }
+    input{
+      margin-left: 10px;
+    }
+    table,th,tr,td{
+      border: 2px rgb(52, 21, 154) solid;
+      text-align: center;
+    }
+    button,a{
+      text-decoration: none;
+      color: blue;
+    }
+  button{
+    margin-left: 10px;
+  }
+  table {
+  counter-reset: rowNumber;
+}
+
+table tr {
+  counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+  content: counter(rowNumber);
+  min-width: 1em;
+  margin-right: 0.5em;
+}
+
+
+  </style>
+
+
+<script src="{% static '/javascript/table2excel.js' %}">
+
+
+</script>
+</head>
+<body>
+
+<div class="kik">
+
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Report</h1>
+    <div class="jet">
+  <center>
+    <button  id="export" type="button" class="btn btn-primary"><span class="bi bi-file-excel"></span> Export to Excel</button>
+    <button class="btn btn-primary hidden-print" onclick="window.print();"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
+
+    <label for="FacultyName">FacultyName:</label>
+    
+      <select type="text" id="FacultyName" name="FacultyName">
+        <option value="">None</option>
+        <option value="Dr. D. Magesh Kumar">Dr. D. Magesh Kumar</option>
+        <option value="Dr. P. Aruna">Dr. P. Aruna</option>
+        <option value="MS. D. christy Sujatha">MS. D. christy Sujatha</option>
+        <option value="Mr. Chandra Kumar Peter">Mr. Chandra Kumar Peter</option>
+        <option value="MS. S. Manjula">MS. S. Manjula</option>
+        <option value="MS. K. Meena">MS. K. Meena</option>
+        <option value="Ms. R. vanitha">Ms. R. vanitha</option>
+        <option value="Mr.S. Kalai Selvan">Mr.S. Kalai Selvan</option>
+        <option value="Dr. K. Dhinakaran">Dr. K. Dhinakaran</option>
+        <option value="Ms. M Rajathi">Ms. M Rajathi</option>
+        <option value="Dr.K. Thiyagarajan">Dr.K. Thiyagarajan</option>
+        <option value="Mr. R. Arul yo garaj">Mr. R. Arul yo garaj</option>
+        <option value="MS. U. Ulomathi">MS. U. Ulomathi</option>
+        <option value="Dr. V. Sathya">Dr. V. Sathya</option>
+        <option value="Dr. J Kumar">Dr. J Kumar</option>
+        
+
+
+      </select>
+    <label for="parpose">Options:</label>
+    <select type="text" id="parpose" name="parpose">
+      <option value="">None</option>
+      <option value="Seminar">       Seminar        </option>
+      <option value="Workshop">      Workshop       </option>
+      <option value="Webinar">       Webinar        </option>
+      <option value="FDP">           FDP            </option>
+      <option value="Symposium">     Symposium     </option>
+      <option value="Others">        Others        </option>
+      <option value="GuestLecturer"> GuestLecturer </option>
+      <option value="AlumniLecturer">AlumniLecturer </option>
+    </select>
+From: <input type="date" name = "fdate" id="fdate">
+To : <input type="date" name="tdate" id="tdate">
+<input class="btn btn-primary hidden-print" type="submit"  value="search">
+
+
+
+<button  type="button" class="btn btn-primary hidden-print"  name="home"><a style="color:white;" href="/ret/"> Refresh </a></button>
+<button  class="btn btn-primary hidden-print"><a style="color:white;" href="/repts/">Back</a></button>
+</div>
+
+
+<br><br>
+
+</center>
+<br>
+  <table id="examble-table" border='3px'>
+    <thead>
+      <th>NO</th>
+        <th>parpose    </th>
+        <th>FacultyName</th>
+        <th>Title      </th>
+        <th>personone </th>
+        <th>persontwo </th>
+        <th>persontree</th>
+        <th>Date </th>
+        <th>Venue</th>
+        
+        <th>No Of P student</th>
+        <th>No Of P Staff</th>
+        <th>Brochure       </th>
+        <th>Programe Report</th>
+        <th>Screen Shorts  </th>
+        <th>Note Order     </th>
+    </thead>
+    <tr>
+      {% for st in student %}
+
+      <td><center></center></td>
+      <td><center>{{st.parpose}}     </center></td>
+      <td><center>{{st.FacultyName}} </center></td>
+      <td><center>{{st.Title}}       </center></td>
+      <td><center>{{st.personone}}       </center></td>
+      <td><center>{{st.persontwo}}       </center></td>
+      <td><center>{{st.persontree}}       </center></td>
+      <td><center>  {{st.Datee}}    </center></td>
+      <td><center>{{st.Place}}       </center></td>
+      
+      <td><center>{{st.nops}}       </center></td>
+      <td><center>{{st.nopt}}       </center></td>
+     <td><center><a href="http://127.0.0.1:8000/{{st.fil}}"> {{st.fil              }}</a></center></td>
+      <td><center><a href="http://127.0.0.1:8000/{{st.Upload_Photo_file}}"> {{st.Upload_Photo_file}} </a>      </center></td>
+      <td><center><a href="http://127.0.0.1:8000/{{st.Attendance}}"> {{st.Attendance       }}  </a>     </center></td>
+      <td><center><a href="http://127.0.0.1:8000/{{st.Report}} "> {{st.Report           }}   </a>    </center></td>
+
+
+
+
+    </tr>
+
+    {% endfor %}
+  </table>
+
+</form>
+
+ <script>
+   var table2excel = new Table2Excel();
+
+   document.getElementById('export').addEventListener('click', function() {
+     table2excel.export(document.querySelectorAll('table'));
+   });
+ </script>
+<br>
+
+
+</div>
+
+
+</body>
+</html>
+{% endif %}

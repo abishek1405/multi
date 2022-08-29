@@ -1,0 +1,139 @@
+
+
+
+
+<!DOCTYPE html>
+{% load static %}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+       
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+
+button {
+background-color: #04AA6D;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+}
+
+button:hover {
+opacity: 0.8;
+}
+
+.cancelbtn {
+width: auto;
+padding: 10px 18px;
+background-color: #f44336;
+}
+
+.imgcontainer {
+text-align: center;
+margin: 24px 0 12px 0;
+}
+
+img.avatar {
+width: 40%;
+border-radius: 50%;
+}
+
+.container {
+padding: 16px;
+width: 40%;
+margin-left: 30%;
+text-decoration: none;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+
+span.psw {
+float: right;
+padding-top: 16px;
+}
+
+
+@media screen and (max-width: 300px) {
+span.psw {
+   display: block;
+   float: none;
+}
+.cancelbtn {
+   width: 100%;
+}
+}
+</style>
+        </style>
+    </head>
+    <body>
+
+
+
+  <center> <b> <h1>Sign In</h1></center></b>
+        {% block content %}
+        <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="imgcontainer">
+                    <img src="{% static 'images/men.jpg' %}" alt="My image">
+                    <p style="color: red;">{{jk}}</p>
+                    </div>
+
+                      <div class="container">
+                        <label for="id_username">Enter username</label>
+                        <input type="text" id="id_username" name="username">
+<br>
+<br>
+
+                            <label for="id_username">Enter your password</label>
+                            <input type="password" id="id_password" name="password">
+<br>
+<br>
+
+                            <button type="submit" name="signin">signin</button>
+                            <button type="submit"><a href="/student/signup/">student signup</a></button>
+                            <button type="submit"><a href="/lecturar/signup/">Lecturer signup</a></button>
+                            <button type="submit" name="home"> <a href='/home/'>home</a> </button>
+
+                            </div>
+
+
+                </form>
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+        <script src="" async defer></script>
+    </body>
+</html>

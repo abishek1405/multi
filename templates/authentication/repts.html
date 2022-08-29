@@ -1,0 +1,249 @@
+{% if user.is_lecturer %} 
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin-left: 5px;
+  font-size: 10 px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  opacity: 0;
+  transition: 1s ease;
+  background-color: red;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.icon {
+  color: white;
+  font-size: 50px;
+  position:relative;
+  top: 30%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: justify;
+
+}
+
+
+.fa-user:hover {
+  color: #eee;
+}
+.lkl{
+  display:inline-flex;
+  
+}
+.info {
+  border-color: #2196F3;
+  color: dodgerblue;
+}
+
+.info:hover {
+  background: #2196F3;
+  color: white;
+}
+
+.btn {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+a{
+  text-decoration: none;
+}
+@media (max-width: 800px){
+  .container h1{
+
+ 
+  font-size: 20px;
+}
+.lkl{
+  width: 800px;
+  display:block;
+}
+
+}
+
+</style>
+</head>
+<body>
+  <br><div class="head">
+  <center>  <button  style="display:flex;" class="btn info"> <a href="/tlog/"> Home</a></button></center><br><br></div>
+ <center>
+<div class="lkl">
+  
+ 
+ <br>
+ {% load static %}
+<div class="container">
+  <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" class="image">
+  <center><h1>Faculty Report</h1></center>
+  <div class="overlay">
+  <a href="/ret/" class="icon" title="User Profile">
+    <i class="fa fa-user"></i>Faculty Report
+  </a>
+  </div>
+</div>
+<div class="container">
+  <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" class="image">
+    <center><h1>Organized Events Report</h1></center>
+  <div class="overlay">
+  <a href="/facrep/" class="icon" title="User Profile">
+    <i class="fa fa-user"></i>Organized Events Report
+  </a>
+  </div>
+</div>
+
+<div class="container">
+  <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" class="image"> 
+  <center><h1>Publication Report</h1></center>
+  <div class="overlay">
+  <a href="/pubreb/" class="icon" title="User Profile">
+    <i class="fa fa-user"></i>Publication Report
+  </a>
+  </div>
+</div>
+
+
+
+
+
+<div class="container">
+  <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" class="image">
+<center><h1>Conference Proceedings Report</h1></center>
+  <div class="overlay">
+  <a href="/conferrep/" class="icon" title="User Profile">
+    <i class="fa fa-user"></i>Conference Proceedings Report
+  </a>
+  </div>
+</div>
+</div>
+
+
+
+<div class="lkl">
+  {% load static %}
+ <div class="container">
+   <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" class="image">
+   <center><h1>Book Publication Report</h1></center>
+   <div class="overlay">
+   <a href="/bookpubbrepp/" class="icon" title="User Profile">
+     <i class="fa fa-user"></i>Book Publication Report
+   </a>
+   </div>
+ </div>
+ <div class="container">
+   <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" class="image">
+     <center><h1>Book Chapter Publication Report</h1></center>
+   <div class="overlay">
+   <a href="/bookchappubrebb/" class="icon" title="User Profile">
+     <i class="fa fa-user"></i>Book Chapter Publication Report
+   </a>
+   </div>
+ </div>
+
+ <div class="container">
+   <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" class="image"> 
+   <center><h1>Research Article Report</h1></center>
+   <div class="overlay">
+   <a href="/researarticcallrebbu/" class="icon" title="User Profile">
+     <i class="fa fa-user"></i>Research Article Report
+   </a>
+   </div>
+ </div>
+
+
+
+
+ <div class="container">
+   <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" class="image">
+ <center><h1>Placement Reports</h1></center>
+   <div class="overlay">
+   <a href="/place/" class="icon" title="User Profile">
+     <i class="fa fa-user"></i>Placement Reports
+   </a>
+   </div>
+ </div>
+ </div>
+
+
+
+
+
+
+
+ 
+<div class="lkl">
+  {% load static %}
+ <div class="container">
+   <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" class="image">
+   <center><h1>Placement Selected reports</h1></center>
+   <div class="overlay">
+   <a href="/placeselrep/" class="icon" title="User Profile">
+     <i class="fa fa-user"></i>Placement Selected reports
+   </a>
+   </div>
+ </div>
+ <div class="container">
+   <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" class="image">
+     <center><h1>Student Details</h1></center>
+   <div class="overlay">
+   <a href="/studrep/" class="icon" title="User Profile">
+     <i class="fa fa-user"></i>Student Details
+   </a>
+   </div>
+ </div>
+
+ <div class="container">
+   <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" class="image"> 
+   <center><h1>Upcoming</h1></center>
+   <div class="overlay">
+   <a href="/researarticcallrebbu/" class="icon" title="User Profile">
+     <i class="fa fa-user"></i>Upcoming
+   </a>
+   </div>
+ </div>
+
+
+
+
+ <div class="container">
+   <img src="{% static 'images/img_avatar.png' %}" alt="Avatar" class="image">
+ <center><h1>Upcoming</h1></center>
+   <div class="overlay">
+   <a href="//" class="icon" title="User Profile">
+     <i class="fa fa-user"></i>Upcoming
+   </a>
+   </div>
+ </div>
+ </div>
+</center>
+</body>
+</html>
+{% endif %}

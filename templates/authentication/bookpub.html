@@ -1,0 +1,179 @@
+{% if user.is_lecturer %} 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        form {border: 3px solid #f1f1f1;}
+
+        input[type=text], input[type=month],input[type=password], input[type=date], input[type=parpose] ,select[type=text],input[type=file],input[type=number]{
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+
+        button {
+          background-color: #04AA6D;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+
+        button:hover {
+          opacity: 0.8;
+        }
+
+        .cancelbtn {
+          width: auto;
+          padding: 10px 18px;
+          background-color: #f44336;
+        }
+
+        .imgcontainer {
+          text-align: center;
+          margin: 24px 0 12px 0;
+        }
+
+        img.avatar {
+          width: 40%;
+          border-radius: 50%;
+        }
+
+        .container {
+          padding: 16px;
+          width: 40%;
+          margin-left: 30%;
+        }
+
+        span.psw {
+          float: right;
+          padding-top: 16px;
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 700px) {
+          span.psw {
+             display: block;
+             float: none;
+          }
+          .cancelbtn {
+             width: 100%;
+          }
+          .container {
+          padding: 16px;
+          width: 90%;
+          margin-left: 0%;
+        }
+        }
+        a{
+          text-decoration: none;
+          color: #f1f1f1;
+        }
+        </style>
+        <script>
+function validateForm() {
+  let x = document.forms["myForm"]["book"].value;
+  let y = document.forms["myForm"]["Author"].value;
+  let a = document.forms["myForm"]["isbn"].value;
+  let b = document.forms["myForm"]["publisher"].value;
+  let c = document.forms["myForm"]["mandy"].value;
+  let d = document.forms["myForm"]["bookwra"].value;
+  let j = document.forms["myForm"]["fill"].value;
+
+  if (x == "") {
+    alert("Titile of the Book must be filled out");
+    return false;
+  }
+  if (y == "") {
+    alert("Name of the Author/Designation/Department must be filled out");
+    return false;
+  }
+  if (a == "") {
+    alert("ISBN NO must be filled out");
+    return false;
+  }
+  if (b == "") {
+    alert("publisher must be filled out");
+    return false;
+  }
+  if (c == "") {
+    alert("Month & year of publication/ Acceptance must be filled out");
+    return false;
+  }
+  if (d == "") {
+    alert("Proof Attachment1 must be filled out");
+    return false;
+  }
+  if (j == "") {
+    alert("Proof Attachment2 must be filled out");
+    return false;
+  }
+
+}
+</script>
+</head>
+<body>
+<form  method="POST" name="myForm" class="post-form" onsubmit="return validateForm()" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="imgcontainer">
+            <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+          </div>
+
+  <div class="container">
+    <button type="button" name="home"><a href="/tlog/">Home </a></button>
+ <center><h1>Book Publication</h1></center>
+    <hr>
+    <br>
+         
+   
+     
+
+    
+  
+    <label for="FacultyName">Titile of the Book<span style="color: red; font-size: 25px;">*</span></label>
+    <input type="text" id="book" name="book" value=""><br>
+    <label for="parpose">Name of the Author/Designation/Department</label>
+    <input type="text" id="Author" name="Author" value=""><br>
+
+      <label for="Title">ISBN NO<span style="color: red; font-size: 25px;">*</span></label><br>
+      <input type="text" id="isbn" name="isbn" value=""><br>
+
+      <label for="Place ">publisher<span style="color: red; font-size: 25px;">*</span></label><br>
+      <input type="text" id="publisher" name="publisher" value=""><br>
+
+ 
+      <label for="start">Month & year of publication/ Acceptance<span style="color: red; font-size: 25px;">*</span></label>
+      <input type="month" id="mandy" name="mandy"min="2018-03" value="">
+
+
+        <label >Proof Attachment<span style="color: red; font-size: 25px;">*</span></label>
+        <input type="file" multiple  id="bookwra" name="bookwra">
+
+        
+        <label >Proof Attachment<span style="color: red; font-size: 25px;">*</span></label>
+        <input type="file" multiple  id="fill" name="fill">
+
+        <button type="submit" value="Submit">submit</button>
+        <button type="button" name="home"><a href="/tlog/">Home </a></button>
+
+  </div>
+</form>
+</body>
+</html>
+{% endif %}

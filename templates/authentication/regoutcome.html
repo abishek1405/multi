@@ -1,0 +1,252 @@
+{% if user.is_lecturer %} 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        form {border: 3px solid #f1f1f1;}
+
+        input[type=text], input[type=password], input[type=date], input[type=parpose] ,select[type=text],input[type=file],input[type=number]{
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+
+        button {
+          background-color: #04AA6D;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+
+        button:hover {
+          opacity: 0.8;
+        }
+
+        .cancelbtn {
+          width: auto;
+          padding: 10px 18px;
+          background-color: #f44336;
+        }
+
+        .imgcontainer {
+          text-align: center;
+          margin: 24px 0 12px 0;
+        }
+
+        img.avatar {
+          width: 40%;
+          border-radius: 50%;
+        }
+
+        .container {
+          padding: 16px;
+          width: 40%;
+          margin-left: 30%;
+        }
+
+        span.psw {
+          float: right;
+          padding-top: 16px;
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 700px) {
+        span.psw {
+           display: block;
+           float: none;
+        }
+        .cancelbtn {
+           width: 100%;
+        }
+        .container {
+          padding: 16px;
+          width: 90%;
+          margin-left: 0%;
+        }
+        
+       
+      }
+      a{
+          text-decoration: none;
+          color: #f1f1f1;
+        }
+        </style>
+<script>
+  function validateForm() {
+  let x = document.forms["myForm"]["parpose"].value;
+  let y = document.forms["myForm"]["FacultyName"].value;
+  let a = document.forms["myForm"]["Title"].value;
+  let b = document.forms["myForm"]["personone"].value;
+
+  let e = document.forms["myForm"]["Datee"].value;
+  let f = document.forms["myForm"]["Place"].value;
+  
+  let h = document.forms["myForm"]["nops"].value;
+  let i = document.forms["myForm"]["nopt"].value;
+  let j = document.forms["myForm"]["fil"].value;
+  let k = document.forms["myForm"]["Upload_Photo_file"].value;
+  let l = document.forms["myForm"]["Attendance"].value;
+  let m = document.forms["myForm"]["Report"].value;
+
+  if (x == "") {
+    alert("Event must be filled out");
+    return false;
+  }
+  if (y == "") {
+    alert("Name of the faculty must be filled out");
+    return false;
+  }
+  if (a == "") {
+    alert("Title must be filled out");
+    return false;
+  }
+  if (b == "") {
+    alert("person must be filled out");
+    return false;
+  }
+
+  if (e == "") {
+    alert("Date must be filled out");
+    return false;
+  }
+  if (f == "") {
+    alert("place must be filled out");
+    return false;
+  }
+ 
+  if (h == "") {
+    alert("number of participant staff  must be filled out");
+    return false;
+  }
+  if (i == "") {
+    alert("number of participant students must be filled out");
+    return false;
+  }
+  if (j == "") {
+    alert("Brochure must be filled out");
+    return false;
+  }
+  if (k == "") {
+    alert("Programe Report must be filled out");
+    return false;
+  }
+  if (l == "") {
+    alert("Screen Shorts must be filled out");
+    return false;
+  }
+  if (m == "") {
+    alert("Note Order must be filled out");
+    return false;
+  }
+
+}
+</script>
+</head>
+<body>
+    <form  method="POST" name="myForm"  class="post-form" onsubmit="return validateForm()" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="imgcontainer">
+            <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+          </div>
+
+  <div class="container">
+    <button type="button" name="home"><a href="/tlog/">Home </a></button>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <label for="parpose">Event Category: <span style="color: red; font-size: 25px;"">*</span> </label>
+    <select type="text" id="parpose" name="parpose">
+      <option value=""></option>
+      <option value="Seminar">Seminar</option>
+      <option value="Workshop">Workshop</option>
+      <option value="Webinar">Webinar</option>
+      <option value="FDP">FDP</option>
+      <option value="Symposium">Symposium</option>
+      <option value="Others">Others</option>
+      <option value="GuestLecturer">GuestLecturer</option>
+      <option value="AlumniLecturer">AlumniLecturer</option>
+    </select>
+    <label for="FacultyName">FacultyName:<span style="color: red; font-size: 25px;"">*</span></label>
+      <select type="text" id="FacultyName" name="FacultyName">
+        <option value=""></option>
+        <option value="Dr. D. Magesh Kumar">Dr. D. Magesh Kumar</option>
+        <option value="Dr. P. Aruna">Dr. P. Aruna</option>
+        <option value="MS. D. christy Sujatha">MS. D. christy Sujatha</option>
+        <option value="Mr. Chandra Kumar Peter">Mr. Chandra Kumar Peter</option>
+        <option value="MS. S. Manjula">MS. S. Manjula</option>
+        <option value="MS. K. Meena">MS. K. Meena</option>
+        <option value="Ms. R. vanitha">Ms. R. vanitha</option>
+        <option value="Mr.S. Kalai Selvan">Mr.S. Kalai Selvan</option>
+        <option value="Dr. K. Dhinakaran">Dr. K. Dhinakaran</option>
+        <option value="Ms. M Rajathi">Ms. M Rajathi</option>
+        <option value="Dr.K. Thiyagarajan">Dr.K. Thiyagarajan</option>
+        <option value="Mr. R. Arul yo garaj">Mr. R. Arul yo garaj</option>
+        <option value="MS. U. Ulomathi">MS. U. Ulomathi</option>
+        <option value="Dr. V. Sathya">Dr. V. Sathya</option>
+        <option value="Dr. J Kumar">Dr. J Kumar</option>
+        
+      </select>
+      <label for="Title">Event Title:<span style="color: red; font-size: 25px;"">*</span></label><br>
+      <input type="text" id="Title" name="Title" value=""><br>
+
+      <label for="personone">Resouce person1:<span style="color: red; font-size: 25px;"">*</span></label><br>
+      <input type="text" id="personone" name="personone" value=""><br>
+
+      <label for="persontwo">Resouce person2:</label><br>
+      <input type="text" id="persontwo" name="persontwo" value="-"><br>
+
+      <label for="persontree">Resouce person3:</label><br>
+      <input type="text" id="persontree" name="persontree" value="-"><br>
+
+
+      <label for="Datee ">Date :<span style="color: red; font-size: 25px;"">*</span></label><br>
+      <input type="date" id="Datee" name="Datee"><br><br>
+
+      <label for="Place ">Place :<span style="color: red; font-size: 25px;"">*</span></label><br>
+      <input type="text" id="Place" name="Place" value=""><br>
+
+       
+        <label for="nops ">No Of Participants Student :<span style="color: red; font-size: 25px;"">*</span></label><br>
+        <input type="number" id="nops" name="nops" value=""><br>
+        <label for="nopt ">No Of Participants Staff :<span style="color: red; font-size: 25px;"">*</span></label><br>
+        <input type="number" id="nopt" name="nopt" value=""><br>
+
+               
+       
+   
+       
+        <label for="nops ">Brochure :<span style="color: red; font-size: 25px;">*</span></label><br>    
+        <input type="file" name="fil"multiple  id="fil">
+        <label for="nops "> Programe Report :<span style="color: red; font-size: 25px;">*</span></label><br>
+        <input type="file" name="Upload_Photo_file"multiple  id="Upload_Photo_file">
+        <label for="nops ">Screen Shorts:<span style="color: red; font-size: 25px;"">*</span></label><br>
+        <input type="file" name="Attendance"multiple  id="Attendance">
+        <label for="nops ">Note Order :<span style="color: red; font-size: 25px;" ">*</span></label><br>
+        <input type="file" name="Report"multiple  id="Report">
+       
+        <button type="submit" value="Submit">submit</button>
+        <button type="button" name="home"><a href="/tlog/">Home </a></button>
+
+  </div>
+    </form>
+</body>
+</html>
+{% endif %}

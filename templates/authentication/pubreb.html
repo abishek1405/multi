@@ -1,0 +1,177 @@
+{% if user.is_lecturer %} 
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+  <script src="{% static '/javascript/table2excel.js' %}"></script>
+  <style>
+
+    h1{
+       text-align: center;
+      }
+      div{
+        border: double rgb(26, 219, 237) 5px;
+        display:inline-table;
+        padding: 15px;
+      } 
+    table{
+      width: 100%;
+    }
+    #bt{
+      padding: 5px;
+      border: none;
+      margin-left: 200px;
+    }
+    input{
+      margin-left: 10px;
+    }
+    table,th,tr,td{
+      border: 2px red solid;
+    }
+    button,a{
+      text-decoration: none;
+      color: black;
+    }
+  button{
+    margin-left: 10px;
+  }
+  table {
+  counter-reset: rowNumber;
+}
+
+table tr {
+  counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+  content: counter(rowNumber);
+  min-width: 1em;
+  margin-right: 0.5em;
+}
+th{
+  text-align: center;
+  padding: 5px;
+}
+
+td{
+  text-align: center;
+
+}
+
+
+  </style>
+{% load static %}
+</head>
+<body>
+<center>
+
+<h1>Report</h1>
+<div>
+
+  <br>
+  <hr>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+ 
+    <label for="FacultyName">FacultyName:</label>
+      <select type="text" id="FacultyName" name="FacultyName">
+        <option value="">None</option>
+        <option value="Dr. D. Magesh Kumar">Dr. D. Magesh Kumar</option>
+        <option value="Dr. P. Aruna">Dr. P. Aruna</option>
+        <option value="MS. D. christy Sujatha">MS. D. christy Sujatha</option>
+        <option value="Mr. Chandra Kumar Peter">Mr. Chandra Kumar Peter</option>
+        <option value="MS. S. Manjula">MS. S. Manjula</option>
+        <option value="MS. K. Meena">MS. K. Meena</option>
+        <option value="Ms. R. vanitha">Ms. R. vanitha</option>
+        <option value="Mr.S. Kalai Selvan">Mr.S. Kalai Selvan</option>
+        <option value="Dr. K. Dhinakaran">Dr. K. Dhinakaran</option>
+        <option value="Ms. M Rajathi">Ms. M Rajathi</option>
+        <option value="Dr.K. Thiyagarajan">Dr.K. Thiyagarajan</option>
+        <option value="Mr. R. Arul yo garaj">Mr. R. Arul yo garaj</option>
+        <option value="MS. U. Ulomathi">MS. U. Ulomathi</option>
+        <option value="Dr. V. Sathya">Dr. V. Sathya</option>
+        <option value="Dr. J Kumar">Dr. J Kumar</option>
+        
+      </select>
+    <label for="parpose">Indexed:</label>
+    <input type="text" name="ind" id="ind">
+
+    <label for="parpose">Type of Journal:</label>
+    <input type="text" name="jour" id="jour">
+
+    
+
+
+
+From:  <input type="month" id="fdate" name="fdate"min="2018-03" value="">
+To :  <input type="month" id="tdate" name="tdate"min="2018-03" value="">
+<input type="submit"  value="search">
+
+ <button type="button" name="home"><a href="/pubreb/"> Refresh </a></button> 
+
+<br><br>
+
+ <button  id="export" type="button" class="btn btn-primary"><span class="bi bi-file-excel"></span> Export to Excel</button>
+ <button class="btn btn-primary hidden-print" onclick="window.print();"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
+
+
+<button class="btn btn-primary hidden-print" ><a style="color:white;" href="/repts/">Back</a></button>
+<br>
+<br>
+  <table border='3px'>
+    <thead>
+        <th>NO</th>
+        <th>S.NO</th>
+        <th>Title of the paper      </th>
+        <th>Name  of the Author      </th>
+        <th>Journal Name      </th>
+        <th>Indexed  </th>
+        <th>Impact Factor    </th>
+        <th>Paid / Unpaid Journals      </th>
+        <th>ISSN No      </th>
+        <th>Acceptance     </th>
+        <th>Type of Journal </th>
+
+
+    </thead>
+    <tr>
+      {% for st in student %}
+      <td></td>
+      <td><center>{{st.Sno          }} </center></td>
+      <td><center>{{st.papertitle   }} </center></td>
+      <td><center>{{st.Author       }}       </center></td>
+      <td><center>{{st.Journal      }}       </center></td>
+      <td><center>{{st.Indexed      }}       </center></td>
+      <td><center>{{st.Factor       }}       </center></td>
+      <td><center>{{st.Poru         }}       </center></td>
+      <td><center>{{st.ISSN         }}       </center></td>
+      <td><center>{{st.yearofpub    }}       </center></td>
+      <td><center>{{st.TypeofJournal}}       </center></td>
+
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</center>
+<script>
+    var table2excel = new Table2Excel();
+
+    document.getElementById('export').addEventListener('click', function() {
+      table2excel.export(document.querySelectorAll('table'));
+    });
+</script>
+<br>
+
+
+</div>
+
+</body>
+</html>
+{% endif %}

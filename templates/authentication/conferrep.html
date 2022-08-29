@@ -1,0 +1,192 @@
+{% if user.is_lecturer %} 
+
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+
+  <script src="{% static '/javascript/table2excel.js' %}"></script>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+  <title>Document</title>
+  <style>
+
+    h1{
+       text-align: center;
+      }
+      div{
+        border: double rgb(26, 219, 237) 5px;
+        display:inline-table;
+        padding: 15px;
+      } 
+    table{
+      width: 100%;
+    }
+    #bt{
+      padding: 5px;
+      border: none;
+      margin-left: 200px;
+    }
+    input{
+      margin-left: 10px;
+    }
+    table,th,tr,td{
+      border: 2px red solid;
+    }
+    button,a{
+      text-decoration: none;
+      color: black;
+    }
+  button{
+    margin-left: 10px;
+  }
+  table {
+  counter-reset: rowNumber;
+}
+
+table tr {
+  counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+  content: counter(rowNumber);
+  min-width: 1em;
+  margin-right: 0.5em;
+
+}
+table,th{
+  text-align: center;
+}
+
+
+
+
+  </style>
+{% load static %}
+</head>
+<body>
+<center>
+
+<h1>Report</h1>
+<div>
+
+  <br>
+  <hr>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    
+      <label for="FacultyName">Organizer:</label>
+        <select type="text" id="organizer" name="organizer">
+          <option value="">None</option>
+          <option value="Dr. D. Magesh Kumar">Dr. D. Magesh Kumar</option>
+          <option value="Dr. P. Aruna">Dr. P. Aruna</option>
+          <option value="MS. D. christy Sujatha">MS. D. christy Sujatha</option>
+          <option value="Mr. Chandra Kumar Peter">Mr. Chandra Kumar Peter</option>
+          <option value="MS. S. Manjula">MS. S. Manjula</option>
+          <option value="MS. K. Meena">MS. K. Meena</option>
+          <option value="Ms. R. vanitha">Ms. R. vanitha</option>
+          <option value="Mr.S. Kalai Selvan">Mr.S. Kalai Selvan</option>
+          <option value="Dr. K. Dhinakaran">Dr. K. Dhinakaran</option>
+          <option value="Ms. M Rajathi">Ms. M Rajathi</option>
+          <option value="Dr.K. Thiyagarajan">Dr.K. Thiyagarajan</option>
+          <option value="Mr. R. Arul yo garaj">Mr. R. Arul yo garaj</option>
+          <option value="MS. U. Ulomathi">MS. U. Ulomathi</option>
+          <option value="Dr. V. Sathya">Dr. V. Sathya</option>
+          <option value="Dr. J Kumar">Dr. J Kumar</option>
+          
+        </select>
+            <label for="parpose">Conference:</label>
+      <select type="text" id="Conference" name="Conference">
+        <option value="">None</option>
+        <option value="Seminar">       Seminar        </option>
+        <option value="Workshop">      Workshop       </option>
+        <option value="Webinar">       Webinar        </option>
+        <option value="FDP">           FDP            </option>
+        <option value="Symposium">     Symposium     </option>
+        <option value="Others">        Others        </option>
+        <option value="GuestLecturer"> GuestLecturer </option>
+        <option value="AlumniLecturer">AlumniLecturer </option>
+      </select> 
+  
+      <label for="parpose">Venue:</label>
+      <input type="text" name="venue" id="venue">
+  
+      
+  
+  
+  
+ <b>From:</b>   <input type="date" id="fdate" name="fdate" value="">
+ <b>To : </b>  <input type="date" id="tdate" name="tdate" value="">
+  <input type="submit"  value="search">
+  
+   <button type="button" name="home"><a href="/conferrep/"> Refresh </a></button> 
+  
+  <br><br>
+
+ <button  id="export" type="button" class="btn btn-primary"><span class="bi bi-file-excel"></span> Export to Excel</button>
+ <button class="btn btn-primary hidden-print" onclick="window.print();"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Print</button>
+
+<button  class="btn btn-primary hidden-print"><a style="color:white;" href="/repts/">Back</a></button>
+<br><br>
+
+<br>
+  <table id="examble-table" border='3px'>
+    <thead>
+
+        <th>NO</th>
+        <th>Author</th>
+        <th>Name of the Conference</th>
+        <th>venue</th>
+        <th>Organizer</th>
+        <th>Date   </th>
+        <th> ISBN NO   </th>
+        <th>Page No </th>
+
+
+
+
+    </thead>
+    <tr>
+      {% for st in student %}
+      <td></td>
+      <td><center>{{st.author      }} </center></td>
+      <td><center>{{st.noc         }} </center></td>
+      <td><center>{{st.venue       }}       </center></td>
+      <td><center>{{st.organizer   }}       </center></td>
+      <td><center>{{st.dayy         }}       </center></td>
+      <td><center>{{st.isbn        }}       </center></td>
+      <td><center>{{st.page        }}       </center></td>
+
+
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+<br>
+
+
+</div>
+</center>
+<script>
+  var table2excel = new Table2Excel();
+
+  document.getElementById('export').addEventListener('click', function() {
+    table2excel.export(document.querySelectorAll('table'));
+  });
+</script>
+
+
+</body>
+</html>
+{% endif %}
